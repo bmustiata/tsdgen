@@ -15,13 +15,13 @@ var args = nomnom.option("out", {
 var resultContent = "";
 
 if (args._.length == 0) {
-	console.warn(colors.yellow("No .d.ts files to process."));
+	console.error(colors.red("No .d.ts files to process."));
 	process.exit(1);
 }
 
 // parse all the given files
 args._.slice(2).forEach((definitionFile) => {
-	console.log("Processing " + colors.cyan(definitionFile));
+	console.error("Processing " + colors.cyan(definitionFile));
 	
 	var content : string = fs.readFileSync(definitionFile, {
 		encoding : "utf-8"
