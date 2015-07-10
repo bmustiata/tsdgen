@@ -46,3 +46,6 @@ As available in the [live-reload.sh](https://github.com/bmustiata/terminal-conso
 
 The tsc compiler will compile the sources into the lib folder, and after the tsdgen will generate the module `.d.ts` file.
 
+## ChangeLog
+
+v0.1.1 2015-07-10 *Bugfix* Parse local definitions. Parse only files sent via nomnom.
