@@ -3,6 +3,8 @@
 /// <reference path="../../../typings/node/doctrine.d.ts"/>
 
 import doctrine = require("doctrine");
+import findItemContentModule = require("./findItemContent");
+import findItemContent = findItemContentModule.findItemContent;
 
 /**
  * Parses the definitions from the given .d.ts file content,
@@ -95,26 +97,4 @@ function readExportedModules(jsDoc : string) : Array<string>{
 	}
 
 	return result;
-}
-
-/**
- * Finds the item content that needs to be exported in the modules.
- */
-function findItemContent(lines : Array<string>, startIndex) {
-	var startingLine = lines[startIndex],
-		endIndex = startIndex;
-	
-	if (/^.*\{\s*$/.test(startingLine)) { 
-		while (!/^\s*\}\s*$/.test(lines[endIndex])) {
-			endIndex++;
-		}
-	}
-	
-	var textWithDeclares = lines.slice(startIndex, endIndex + 1).join("\n") + "\n";
-	
-	textWithDeclares = textWithDeclares.replace(/^(\s*)declare function /, "$1export function ")
-		.replace(/^(\s*)declare interface /, "$1export interface ")
-		.replace(/^(\s*)declare class /, "$1export class ");
-	
-	return textWithDeclares; 
 }
