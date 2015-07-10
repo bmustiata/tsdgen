@@ -20,7 +20,7 @@ if (args._.length == 0) {
 }
 
 // parse all the given files
-args._.slice(2).forEach((definitionFile) => {
+args._.forEach((definitionFile) => {
 	console.error("Processing " + colors.cyan(definitionFile));
 	
 	var content : string = fs.readFileSync(definitionFile, {
