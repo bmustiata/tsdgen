@@ -110,5 +110,11 @@ function findItemContent(lines : Array<string>, startIndex) {
 		}
 	}
 	
-	return lines.slice(startIndex, endIndex + 1).join("\n").replace(/ declare /, " ") + "\n"; 
+	var textWithDeclares = lines.slice(startIndex, endIndex + 1).join("\n") + "\n";
+	
+	textWithDeclares = textWithDeclares.replace(/^(\s*)declare function /, "$1export function ")
+		.replace(/^(\s*)declare interface /, "$1export interface ")
+		.replace(/^(\s*)declare class /, "$1export class ");
+	
+	return textWithDeclares; 
 }
