@@ -1,4 +1,4 @@
-/// <reference path="../typings/node/doctrine.d.ts" />
+/// <reference path="../../typings/node/doctrine.d.ts" />
 /**
  * Parses the definitions from the given .d.ts file content,
  * returning an array of items that have the @inmodule

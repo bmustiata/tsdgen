@@ -6,7 +6,7 @@ module.exports = function(grunt) {
     grunt.initConfig({
         clean: {
             dist : [
-                "lib/"
+                "target/"
             ]
         },
 
@@ -15,7 +15,8 @@ module.exports = function(grunt) {
                 // pretend: true,
                 verbose: true,
                 files : [
-                    { expand: true, cwd: 'src/main/bin', src: ['**'], dest: 'lib/' }
+                    { expand: true, cwd: 'src/main/bin', src: ['**'], dest: 'target/' },
+                    { expand: true, cwd: 'src/main/grunt', src: ['**/*.js'], dest: 'tasks/' }
                 ]
             }
         },
@@ -28,10 +29,10 @@ module.exports = function(grunt) {
                     declaration: true,
                 },
                 files: [{
-                    dest: "lib/",
+                    dest: "target/",
                     src: [
-                        "src/main/core/**/*.ts",
-                        "src/main/core/**/*.d.ts"
+                        "src/main/**/*.ts",
+                        "src/main/**/*.d.ts"
                     ]
                 }]
             }

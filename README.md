@@ -46,6 +46,43 @@ As available in the [live-reload.sh](https://github.com/bmustiata/terminal-conso
 
 The tsc compiler will compile the sources into the lib folder, and after the tsdgen will generate the module `.d.ts` file.
 
+## Grunt
+
+If you want to use tsdgen with grunt, you can just npm install it with `--save-dev`
+and then edit your Gruntfile.js configuration:
+
+```javascript
+module.exports = function(grunt) {
+    // configuration for the plugins.
+    grunt.initConfig({
+        // ...
+        tsdgen : {
+            "dist" : {
+                files : [
+                    {
+                        src: [
+                            "lib/core-promise.d.ts"
+                        ],
+                        dest: "./core-promise.d.ts"
+                    }
+                ]
+            }
+        }
+    });
+
+    // load NPM tasks:
+    grunt.loadNpmTasks("tsdgen");
+
+    // register our tasks:
+    grunt.registerTask("default", ["tsdgen"]);
+};
+
+```
+
+Multiple `.d.ts` files can be passed for input, in order to output a single
+module definitions file.
+
 ## ChangeLog
 
+v0.2.0 2015-07-21 Added a grunt task to generate definitions.
 v0.1.1 2015-07-10 *Bugfix* Parse local definitions. Parse only files sent via nomnom.
